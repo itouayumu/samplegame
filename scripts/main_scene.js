@@ -12,12 +12,21 @@ class MainScene extends Phaser.Scene {
     preload() {
          // 画像の読み込み(使用する時の名前, パス)
         this.load.image('back', 'assets/back.png');
+        this.load.image('TARO', 'assets/TARO.png');
+        this.load.image('HANAKO', 'assets/HANAKO.png');
+
     }
 
     // シーン初期化処理
     create() {
          // 単体画像をシーンに追加(X座標,Y座標,画像名)
         this.add.image(400, 300, 'back');
+        const TARO = this.physics.add.sprite(50, 50, 'TARO');
+        const HANAKO = this.physics.add.sprite(750, 400, 'HANAKO');
+
+        this.TARO = TARO
+
+        this.HANAKO = HANAKO
         }
 
      // 毎フレーム実行される繰り返し処理
