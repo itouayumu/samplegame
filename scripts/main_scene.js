@@ -67,6 +67,7 @@ class MainScene extends Phaser.Scene {
             this.HANAKO.setVelocityX(-40);// 右方向の速度を設定
 
 
+            
         }else{
 
             this.TARO.setVelocityX(0);// 横方向の速度を0
