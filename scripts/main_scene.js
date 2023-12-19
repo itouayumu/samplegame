@@ -14,6 +14,8 @@ class MainScene extends Phaser.Scene {
         this.load.image('back', 'assets/back.png');
         this.load.image('TARO', 'assets/TARO.png');
         this.load.image('HANAKO', 'assets/HANAKO.png');
+        this.load.image('APPLE', 'assets/apple.png');
+        this.load.image('orange', 'assets/orange.png');
 
     }
 
@@ -27,6 +29,17 @@ class MainScene extends Phaser.Scene {
         this.TARO = TARO
 
         this.HANAKO = HANAKO
+        for (let index = 0; index < 5; index++) {
+            let  randx1 = Phaser.Math.Between(25, 775) ; 
+            let randy1 =  Phaser.Math.Between(25, 425) ; 
+            this.add.image(randx1, randy1 , 'APPLE'); 
+            let  randx2 = Phaser.Math.Between(25, 775) ; 
+            let randy2 =  Phaser.Math.Between(25, 425) ; 
+            this.add.image(randx2, randy2 , 'orange'); 
+        }
+        
+
+            
         }
 
      // 毎フレーム実行される繰り返し処理
