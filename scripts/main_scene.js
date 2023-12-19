@@ -31,8 +31,55 @@ class MainScene extends Phaser.Scene {
 
      // 毎フレーム実行される繰り返し処理
     update(time, delta) {
-        
+        let cursors = this.input.keyboard.createCursorKeys();
+
+
+        if(cursors.up.isDown){
+
+            console.log("Up!!");
+
+            this.TARO.setVelocityY(-40);// 上方向の速度を設定
+            this.HANAKO.setVelocityY(40);// 上方向の速度を設定
+
+
+        } else if(cursors.down.isDown){
+
+            console.log("down!!");
+
+            this.TARO.setVelocityY(40);// 下方向の速度を設定
+            this.HANAKO.setVelocityY(-40);// 下方向の速度を設定
+
+       
+
+        }else if(cursors.left.isDown){
+
+            console.log("Left");
+
+            this.TARO.setVelocityX(-40);// 左方向の速度を設定
+            this.HANAKO.setVelocityX(40);// 左方向の速度を設定
+
+
+        }else if(cursors.right.isDown){
+
+            console.log("Right!!");
+
+            this.TARO.setVelocityX(40);// 右方向の速度を設定
+            this.HANAKO.setVelocityX(-40);// 右方向の速度を設定
+
+
+        }else{
+
+            this.TARO.setVelocityX(0);// 横方向の速度を0
+            this.HANAKO.setVelocityX(0);// 横方向の速度を0
+
+            this.TARO.setVelocityY(0);// 縦方向の速度を0
+            this.HANAKO.setVelocityY(0);// 縦方向の速度を0
+
+        }
+
+
+    }
     }
 
-}
+
 
