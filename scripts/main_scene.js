@@ -1,4 +1,3 @@
-// シーンクラス
 // 他のJSファイルから呼び出された場合はシーンを返す
 class MainScene extends Phaser.Scene {
     
@@ -32,15 +31,27 @@ class MainScene extends Phaser.Scene {
         this.TARO = TARO
 
         this.HANAKO = HANAKO
+
+        let fulte = this.physics.add.staticGroup();
         for (let index = 0; index < 5; index++) {
             let  randx1 = Phaser.Math.Between(25, 775) ; 
             let randy1 =  Phaser.Math.Between(25, 425) ; 
-            this.add.image(randx1, randy1 , 'APPLE'); 
+            fulte.create(randx1, randy1 , 'APPLE'); 
             let  randx2 = Phaser.Math.Between(25, 775) ; 
             let randy2 =  Phaser.Math.Between(25, 425) ; 
-            this.add.image(randx2, randy2 , 'orange'); 
+            fulte.create(randx2, randy2 , 'orange'); 
         }
-        
+        this.physics.add.overlap(TARO, fulte, collectCoin, null, this);
+        function collectCoin(p,coin){
+            this.physics.pause();
+            
+        }
+        this.physics.add.overlap(HANAKO, fulte, collectCoin, null, this);
+        function collectCoin(p,coin){
+            this.physics.pause();
+           
+            
+        }
 
             
 
@@ -98,8 +109,6 @@ class MainScene extends Phaser.Scene {
 
 
     }
+
     }
-
-
-
 
