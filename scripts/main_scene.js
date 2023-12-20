@@ -31,6 +31,7 @@ class MainScene extends Phaser.Scene {
         this.TARO = TARO
 
         this.HANAKO = HANAKO
+
         let fulte = this.physics.add.staticGroup();
         for (let index = 0; index < 5; index++) {
             let  randx1 = Phaser.Math.Between(25, 775) ; 
@@ -108,4 +109,6 @@ class MainScene extends Phaser.Scene {
 
 
     }
+
     }
+
