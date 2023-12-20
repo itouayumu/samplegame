@@ -43,12 +43,12 @@ class MainScene extends Phaser.Scene {
         this.physics.add.overlap(TARO, fulte, collectCoin, null, this);
         function collectCoin(p,coin){
             this.physics.pause();
-            
+            this.add.text(D_WIDTH/3,D_HEIGHT*1/3, 'Gameovera', { fontSize: '32px', fill: '#FFF' });
         }
         this.physics.add.overlap(HANAKO, fulte, collectCoin, null, this);
         function collectCoin(p,coin){
             this.physics.pause();
-           
+            this.add.text(D_WIDTH/3,D_HEIGHT*1/3, 'Gameovera', { fontSize: '32px', fill: '#FFF' });
             
         }
 
