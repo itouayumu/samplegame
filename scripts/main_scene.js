@@ -1,10 +1,11 @@
 // 他のJSファイルから呼び出された場合はシーンを返す
 class MainScene extends Phaser.Scene {
-    
+    // count = 0;
     // コンストラクタ
     constructor() {
         // 継承した「Phaser.Scene」クラスのコンストラクタの呼び出し
         super('MainScene');
+        this.count=0; //取得したフルーツの数を数える変数
     }
 
     // シーンの事前読み込み処理
@@ -41,18 +42,17 @@ class MainScene extends Phaser.Scene {
             let randy2 =  Phaser.Math.Between(25, 425) ; 
             fulte.create(randx2, randy2 , 'orange'); 
         }
-        this.physics.add.overlap(TARO, fulte, collectCoin, null, this);
-        function collectCoin(p,coin){
-            this.physics.pause();
-            this.add.text(D_WIDTH/3,D_HEIGHT*1/3, 'Gameovera', { fontSize: '32px', fill: '#FFF' });
+        // this.physics.add.overlap(TARO, fulte, collectCoin, null, this);
+        // function collectCoin(p,coin){
+        //     this.physics.pause();
+        //     this.add.text(D_WIDTH/3,D_HEIGHT*1/3, 'Gameovera', { fontSize: '32px', fill: '#FFF' });
+        // }
+        this.physics.add.overlap(HANAKO, fulte, collectfulte, null, this);
+        function collectfulte(p,fulte){
+            fulte.destroy();
+           this.count+=1;
         }
-        this.physics.add.overlap(HANAKO, fulte, collectCoin, null, this);
-        function collectCoin(p,coin){
-            this.physics.pause();
-            this.add.text(D_WIDTH/3,D_HEIGHT*1/3, 'Gameovera', { fontSize: '32px', fill: '#FFF' });
-            
-        }
-
+        this.counttext = this.add.text(540, 16,  "獲得フルーツ数"+this.count, { fontSize: '28px', fill: '#FFF' }); //時間表示
             
 
         }
@@ -107,6 +107,12 @@ class MainScene extends Phaser.Scene {
 
         }
 
+        // フルーツを十ことったらゲームを止める
+        if(this.count>=10){
+            this.physics.pause();
+            this.add.text(D_WIDTH/3,D_HEIGHT*1/3, 'clear', { fontSize: '32px', fill: '#FFF' });
+        }
+        this.counttext.setText(  "獲得フルーツ数"+this.count);
 
     }
 
